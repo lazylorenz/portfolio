@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Portfolio Website</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/18715bbce0.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div id="sub-header">
+        <div class="container">
+            <nav>
+                <img src="images/l1.jpg" class="logo">
+                <ul id="sidemenu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <i class="fa-solid fa-xmark" onclick="closemenu()"></i>
+                </ul>
+                <i class="fa-solid fa-bars" onclick="openmenu()"></i>
+            </nav>
+            
+
+<!-- --------portfolio------ -->
+<div id="portfolio">
+    <div class="container">
+        <h1 class="sub-tittle">My Work</h1>
+        <div class="work-list">
+            <div class="work">
+                <img src="images/p1.jpg">
+                <div class="layer">
+                    <h3>Student/Athlete</h3>
+                    <p>A dedicated volleyball student-athlete who balances academics and training with 
+                        discipline, teamwork, and a strong drive to improve both on and off the court.</p>
+                       <a href=""><i class="fa-solid fa-up-right-from-square"></i></a>
+                </div>
+            </div>
+            <div class="work">
+                <img src="images/p2.jpg">
+                <div class="layer">
+                    <h3>Graphics Designer</h3>
+                    <p>A creative graphics designer with a strong eye for detail, 
+                        blending visual storytelling and technical skills to produce clean, 
+                        engaging, and purposeful designs.</p>
+                       <a href=""><i class="fa-solid fa-up-right-from-square"></i></a>
+                </div>
+            </div>
+            <div class="work">
+                <img src="images/p3.jpg">
+                <div class="layer">
+                    <h3>Gamer</h3>
+                    <p>A competitive Call of Duty Mobile player with sharp game sense, 
+                        fast reaction time, and strong team coordination, 
+                        consistently performing under pressure in high-level matches.</p>
+                       <a href="#"><i class="fa-solid fa-up-right-from-square"></i></a>
+                </div>
+            </div>
+        </div> 
+        <a href="services.html" class="btn">See more</a>
+    </div>
+</div>
+
+    <div class="copyright">
+        <marquee direction="right">
+        <p>© 2024 Lorenz Andrie <i class="fa-solid fa-heart"></i> All Rights Reserved.</p>
+    </marquee>
+    </div>
+</div>
+
+<script>
+
+    var tablinks = document.getElementsByClassName("tab-links");
+    var tabcontents = document.getElementsByClassName("tab-contents");
+
+    function opentab(tabname){
+        for(tablink of tablinks){
+            tablink.classList.remove("active-link");
+        }
+        for(tabcontent of tabcontents){
+            tabcontent.classList.remove("active-tab");
+        }
+        event.currentTarget.classList.add("active-link")
+        document.getElementById(tabname).classList.add("active-tab");
+    }
+
+</script>
+
+<script>
+
+    var sidemenu = document.getElementById("sidemenu");
+
+    function openmenu(){
+        sidemenu.style.right = "0";
+    }
+    function closemenu(){
+        sidemenu.style.right = "-200px";
+    }
+
+</script>
+<script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbwqm4LEGJpI0B8Jreg3OSTTuAAZ5FAYrBYAwvhyQiuaAEu_fxz_egJ_bhfZYvgthnRhRg/exec'
+    const form = document.forms['submit-to-google-sheet']
+    const msg = document.getElementById("msg")
+  
+    form.addEventListener('submit', e => {
+      e.preventDefault()
+      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+        .then(response => {
+            msg.innerHTML = "Message Sent Successfully"
+            setTimeout(function(){
+                msg.innerHTML = ""
+            },5000)
+            form.reset()
+        })
+        .catch(error => console.error('Error!', error.message))
+    })
+  </script>
+</script>
+</body>
+</html>

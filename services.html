@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Portfolio Website</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/18715bbce0.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div id="sub-header">
+        <div class="container">
+            <nav>
+                <img src="images/l1.jpg" class="logo">
+                <ul id="sidemenu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <i class="fa-solid fa-xmark" onclick="closemenu()"></i>
+                </ul>
+                <i class="fa-solid fa-bars" onclick="openmenu()"></i>
+            </nav>
+            
+
+<!-- --------services------ -->
+<div id="services">
+    <div class="container">
+        <h1 class="sub-tittle">My Services</h1>
+        <div class="services-list">
+            <div>
+                <i class="fa-solid fa-palette"></i>
+                <h2>Graphic Design</h2>
+                <p> Graphic design is the professional practice of creating visual content, such as logos, marketing materials, 
+                    and website layouts, to communicate messages, ideas, or branding. By utilizing elements like typography, color, imagery, and layout, designers aim to inform, inspire, or influence consumers. It serves as a blend of art and strategy, widely applied in both print and digital media. </p>
+                    <a href="https://www.interaction-design.org/literature/topics/graphic-design">Learn More</a>
+            </div>
+            <div>
+                <i class="fa-solid fa-desktop"></i>
+                <h2>IT & Technical Services</h2>
+                <p>IT and Technical Services involve managing, maintaining, and optimizing a business's technology infrastructure to ensure operational efficiency, 
+                    security, and minimal downtime</p>
+                    <a href="https://www.itx.ph/insights/what-does-technical-services-mean-in-modern-it#:~:text=Technical%20services%20are%20the%20backbone%20of%20how,occur%20*%20Ensuring%20smooth%20usage%20of%20products">Learn More</a>
+            </div>
+            <div>
+                <i class="fa-solid fa-envelope"></i>
+                <h2>Virtual Assistant (VA)</h2>
+                <p> VAs help businesses save time and money by handling tasks like email management, scheduling, social media, and customer service. They are widely used across various industries, 
+                    including medical, real estate, and digital marketing</p>
+                    <a href="https://en.wikipedia.org/wiki/Virtual_assistant_(occupation)">Learn More</a>
+            </div>
+        </div>    
+    </div>
+</div>
+
+<div class="copyright">
+    <marquee direction="right">
+    <p>© 2026 Lorenz Andrie <i class="fa-solid fa-heart"></i> All Rights Reserved.</p>
+</marquee>
+</div>
+</div>  
+
+<script>
+
+    var tablinks = document.getElementsByClassName("tab-links");
+    var tabcontents = document.getElementsByClassName("tab-contents");
+
+    function opentab(tabname){
+        for(tablink of tablinks){
+            tablink.classList.remove("active-link");
+        }
+        for(tabcontent of tabcontents){
+            tabcontent.classList.remove("active-tab");
+        }
+        event.currentTarget.classList.add("active-link")
+        document.getElementById(tabname).classList.add("active-tab");
+    }
+
+</script>
+
+<script>
+
+    var sidemenu = document.getElementById("sidemenu");
+
+    function openmenu(){
+        sidemenu.style.right = "0";
+    }
+    function closemenu(){
+        sidemenu.style.right = "-200px";
+    }
+
+</script>
+<script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbwqm4LEGJpI0B8Jreg3OSTTuAAZ5FAYrBYAwvhyQiuaAEu_fxz_egJ_bhfZYvgthnRhRg/exec'
+    const form = document.forms['submit-to-google-sheet']
+    const msg = document.getElementById("msg")
+  
+    form.addEventListener('submit', e => {
+      e.preventDefault()
+      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+        .then(response => {
+            msg.innerHTML = "Message Sent Successfully"
+            setTimeout(function(){
+                msg.innerHTML = ""
+            },5000)
+            form.reset()
+        })
+        .catch(error => console.error('Error!', error.message))
+    })
+  </script>
+</script>
+</body>
+</html>
